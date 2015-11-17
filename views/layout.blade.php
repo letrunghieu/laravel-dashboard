@@ -47,6 +47,9 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
             <h1>
                 @yield('title')
             </h1>
+            @if (app('breadcrumbs'))
+                {{ app('breadcrumbs')->renderIfExistsArray($dashboard->getBreadcrumbName(), $dashboard->getBreadcrumbParams()) }}
+            @endif
         </section>
 
         <section class="content">

@@ -35,6 +35,20 @@ class Dashboard
     protected $menuManager;
 
     /**
+     * The name of the current breadcrumb
+     *
+     * @var string
+     */
+    protected $breadcrumbName;
+
+    /**
+     * The param to generate the current breadcrumb
+     *
+     * @var array
+     */
+    protected $breadcrumbParams = [];
+
+    /**
      * Dashboard constructor.
      *
      * @param Repository  $config
@@ -64,10 +78,14 @@ class Dashboard
      * Set the title of the current page
      *
      * @param mixed $pageTitle
+     *
+     * @return Dashboard
      */
     public function setPageTitle($pageTitle)
     {
         $this->pageTitle = $pageTitle;
+
+        return $this;
     }
 
     /**
@@ -88,6 +106,46 @@ class Dashboard
     public function getSidebarMenu()
     {
         return $this->menuManager->menu(static::PLUGIN_NAME . '.sidebar');
+    }
+
+    /**
+     * @return string
+     */
+    public function getBreadcrumbName()
+    {
+        return $this->breadcrumbName ?: app('router')->currentRouteName();
+    }
+
+    /**
+     * @param string $breadcrumbName
+     *
+     * @return Dashboard
+     */
+    public function setBreadcrumbName($breadcrumbName)
+    {
+        $this->breadcrumbName = $breadcrumbName;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBreadcrumbParams()
+    {
+        return $this->breadcrumbParams;
+    }
+
+    /**
+     * @param array $breadcrumbParams
+     *
+     * @return Dashboard
+     */
+    public function setBreadcrumbParams(array $breadcrumbParams)
+    {
+        $this->breadcrumbParams = $breadcrumbParams;
+
+        return $this;
     }
 
     /**
