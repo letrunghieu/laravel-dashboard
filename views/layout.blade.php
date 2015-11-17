@@ -51,7 +51,7 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
 
         <section class="content">
             <div class='container'>
-                {!! app('alert')::dump($errors->all()) !!}
+                {!! app('alert')->dump($errors->all()) !!}
             </div>
             @yield('content')
         </section>

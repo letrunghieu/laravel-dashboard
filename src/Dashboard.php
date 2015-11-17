@@ -3,6 +3,7 @@
 namespace HieuLe\LaravelDashboard;
 
 use HieuLe\BodyClasses\Body;
+use HieuLe\LaravelMenu\MenuManager;
 use Illuminate\Contracts\Config\Repository;
 
 class Dashboard
@@ -29,14 +30,21 @@ class Dashboard
     protected $bodyClasses;
 
     /**
+     * @var MenuManager
+     */
+    protected $menuManager;
+
+    /**
      * Dashboard constructor.
      *
-     * @param Repository $config
-     * @param Body       $bodyClasses
+     * @param Repository  $config
+     * @param MenuManager $menuManager
+     * @param Body        $bodyClasses
      */
-    public function __construct(Repository $config, Body $bodyClasses)
+    public function __construct(Repository $config, MenuManager $menuManager, Body $bodyClasses)
     {
         $this->config = $config;
+        $this->menuManager = $menuManager;
         $this->bodyClasses = $bodyClasses;
 
         $this->bodyClasses->addClasses('admin');
@@ -73,13 +81,23 @@ class Dashboard
     }
 
     /**
+     * Get the sidebar menu
+     *
+     * @return \HieuLe\LaravelMenu\Menu
+     */
+    public function getSidebarMenu()
+    {
+        return $this->menuManager->menu(static::PLUGIN_NAME . '.sidebar');
+    }
+
+    /**
      * Current Admin LTE layout
      *
      * @return string|null
      */
     public function getLayout()
     {
-        return $this->config->get(static::PLUGIN_NAME . 'layout');
+        return $this->config->get(static::PLUGIN_NAME . '.layout');
     }
 
     /**
@@ -89,7 +107,7 @@ class Dashboard
      */
     public function isSidebarCollapse()
     {
-        return (bool)$this->config->get(static::PLUGIN_NAME . 'sidebar_collapse');
+        return (bool)$this->config->get(static::PLUGIN_NAME . '.sidebar_collapse');
     }
 
     /**
@@ -99,7 +117,7 @@ class Dashboard
      */
     public function getSkin()
     {
-        return $this->config->get(static::PLUGIN_NAME . 'skin');
+        return $this->config->get(static::PLUGIN_NAME . '.skin');
     }
 
     /**
@@ -109,11 +127,12 @@ class Dashboard
      */
     public function useMiniSidebar()
     {
-        return (bool)$this->config->get(static::PLUGIN_NAME . 'mini_sidebar');
+        return (bool)$this->config->get(static::PLUGIN_NAME . '.mini_sidebar');
     }
 
-    public function getControlSidebarTheme() {
-        return $this->config->get(static::PLUGIN_NAME . 'control_sidebar_theme');
+    public function getControlSidebarTheme()
+    {
+        return $this->config->get(static::PLUGIN_NAME . '.control_sidebar_theme');
     }
 
     /**
@@ -125,7 +144,7 @@ class Dashboard
      */
     public function getAdminLteJsOptions()
     {
-        return json_encode($this->config->get(static::PLUGIN_NAME . 'lte_js', []));
+        return json_encode($this->config->get(static::PLUGIN_NAME . '.lte_js', []));
     }
 
 }
