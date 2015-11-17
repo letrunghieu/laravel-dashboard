@@ -13,10 +13,10 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
     @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.head_assets")
 
     <script>
-        var AdminLTEOptions = {{ $dashboard->getAdminLteJsOptions() }};
+        var AdminLTEOptions = {!! $dashboard->getAdminLteJsOptions() !!};
     </script>
 </head>
-<body class="{{ $dashboard->getBodyClasses()->getClasses() }} skin-{{$dashboard->getSkin()}} {{$dashboard->getLayout()}} {{$dashboard->isSidebarCollapse() ? : 'sidebar_collapse'}} {{$dashboard->useMiniSidebar() ? 'mini_sidebar' : ''}}">
+<body class="{{ $dashboard->getBodyClasses()->getClasses() }} skin-{{$dashboard->getSkin()}} {{$dashboard->getLayout()}} {{$dashboard->isSidebarCollapse() ? 'sidebar_collapse' : ''}} {{$dashboard->useMiniSidebar() ? 'mini_sidebar' : ''}}">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
