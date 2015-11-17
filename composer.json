@@ -27,7 +27,11 @@
     "phpunit/phpunit": "~4.0",
     "mockery/mockery": "dev-master",
     "codeclimate/php-test-reporter": "dev-master",
+    "davejamesmiller/laravel-breadcrumbs": "^3.0",
     "orchestra/testbench": "^3.1"
+  },
+  "suggest": {
+    "davejamesmiller/laravel-breadcrumbs": "Display breadcrumbs in the layout."
   },
   "autoload": {
     "psr-4": {
