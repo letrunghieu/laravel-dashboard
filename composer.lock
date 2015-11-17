@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b6a2726e7049577449743544a57786b8",
-    "content-hash": "063e25933e5b65a37ddb178e7182939a",
+    "hash": "f983db53d95696e48521d11f7ac111e6",
+    "content-hash": "a6849250946814395d2a53f9bb1cb929",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -364,6 +364,56 @@
                 "dynamic"
             ],
             "time": "2015-11-16 03:57:25"
+        },
+        {
+            "name": "hieu-le/laravel-alert",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/letrunghieu/laravel-alert.git",
+                "reference": "bf1bb0af796401011cd676030b16f0a0699f9bd8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/letrunghieu/laravel-alert/zipball/bf1bb0af796401011cd676030b16f0a0699f9bd8",
+                "reference": "bf1bb0af796401011cd676030b16f0a0699f9bd8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/session": "~5.0",
+                "illuminate/support": "~5.0",
+                "illuminate/view": "~5.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HieuLe\\Alert\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hieu Le",
+                    "email": "letrunghieu.cse09@gmail.com"
+                }
+            ],
+            "description": "Laravel global site message system",
+            "keywords": [
+                "alert",
+                "bootstrap",
+                "global",
+                "laravel",
+                "message"
+            ],
+            "time": "2015-08-13 10:12:03"
         },
         {
             "name": "hieu-le/laravel-menu",

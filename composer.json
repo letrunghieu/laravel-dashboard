@@ -21,8 +21,7 @@
     "hieu-le/active": "^3.0",
     "hieu-le/laravel-alert": "^2.0",
     "hieu-le/laravel-menu": "^1.0",
-    "hieu-le/body-classes": "^1.0",
-    "davejamesmiller/laravel-breadcrumbs": "^3.0"
+    "hieu-le/body-classes": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",

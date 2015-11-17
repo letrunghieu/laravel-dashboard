@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="{{ L10n::getCurrentLocale() }}">
+<html class="no-js">
 <head>
     @include('laravel_dashboard::partials.head')
 
