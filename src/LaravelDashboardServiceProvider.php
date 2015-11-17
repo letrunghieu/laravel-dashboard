@@ -10,10 +10,10 @@ class LaravelDashboardServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(dirname(__DIR__) . '/views', 'laravel_dashboard');
-        $this->mergeConfigFrom(dirname(__DIR__) . '/config/config.php', 'laravel_dashboard');
+        $this->loadViewsFrom(dirname(__DIR__) . '/views', Dashboard::PLUGIN_NAME);
+        $this->mergeConfigFrom(dirname(__DIR__) . '/config/config.php', Dashboard::PLUGIN_NAME);
         $this->publishes([
-            dirname(__DIR__) . '/config/config.php' => config_path('laravel_dashboard.php'),
+            dirname(__DIR__) . '/config/config.php' => config_path(Dashboard::PLUGIN_NAME . '.php'),
         ]);
     }
 
@@ -24,8 +24,9 @@ class LaravelDashboardServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['dashboard-body'] = new Body();
-        $this->app['dashboard-body']->addClasses('admin');
+        $this->app->singleton(Dashboard::PLUGIN_NAME, function ($app) {
+            return new Dashboard($app['config'], new Body());
+        });
 
         $this->app->register(ActiveServiceProvider::class);
         $this->app->register(LaravelMenuServiceProvider::class);

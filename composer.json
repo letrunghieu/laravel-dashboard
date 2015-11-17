@@ -19,6 +19,7 @@
     "php": ">=5.5.9",
     "laravel/framework": "^5.1",
     "hieu-le/active": "^3.0",
+    "hieu-le/laravel-alert": "^2.0",
     "hieu-le/laravel-menu": "^1.0",
     "hieu-le/body-classes": "^1.0",
     "davejamesmiller/laravel-breadcrumbs": "^3.0"
