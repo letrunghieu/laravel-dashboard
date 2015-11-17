@@ -1,77 +1,75 @@
 <!DOCTYPE html>
 <html class="no-js">
+<?php
+$dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
+?>
 <head>
-    @include('laravel_dashboard::partials.head')
+    <meta charset="utf-8"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.8/css/dataTables.bootstrap.min.css"/>
-    <link rel="stylesheet"
-          href="//cdn.datatables.net/plug-ins/1.10.8/integration/font-awesome/dataTables.fontAwesome.css"/>
-    <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
+    <title>{{ $dashboard->getPageTitle() }}</title>
 
-    @yield('head-scripts')
+    @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.head_assets")
 
+    <script>
+        var AdminLTEOptions = {{ $dashboard->getAdminLteJsOptions() }};
+    </script>
 </head>
-<body class="admin skin-black-light fixed {{ empty($bodyClasses) ? "" : implode(' ', $bodyClasses) }}">
-    <div class="wrapper">
-        @include('laravel_dashboard::partials.back.top')
+<body class="{{ $dashboard->getBodyClasses()->getClasses() }} skin-{{$dashboard->getSkin()}} {{$dashboard->getLayout()}} {{$dashboard->isSidebarCollapse() ? : 'sidebar_collapse'}} {{$dashboard->useMiniSidebar() ? 'mini_sidebar' : ''}}">
+<div class="wrapper">
+    <header class="main-header">
+        <!-- Logo -->
+        @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.logo")
 
-        <aside class="main-sidebar">
-            <section class="sidebar">
-                <ul class="sidebar-menu">
-                    <li class="header">
-                        @lang('sidebar.menu_header')
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="treeview {{ active_class(if_route(['acp.users.list']))  }}">
-                        <a href="#">
-                                    <span>
-                                        @lang('sidebar.users.all_users')
-                                    </span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li class="{{ active_class(if_route(['acp.users.list']) && !if_query('view', 'trashed'))  }}">
-                                <a href="{{route('acp.users.list')}}">
-                                    @lang('sidebar.users.all_active_users')
-                                </a>
-                            </li>
-                            <li class="{{active_class(if_route(['acp.users.list']) && if_query('view', 'trashed'))}}">
-                                <a href="{{route('acp.users.list')}}?view=trashed">
-                                    @lang('sidebar.users.all_inactive_users')
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </section>
-        </aside>
+                <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
 
-        <div class="content-wrapper">
-            <section class="content-header">
-                <h1>
-                    @yield('title')
-                </h1>
-            </section>
+            <!-- Navbar Right Menu -->
+            <div class="navbar-custom-menu">
+                @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.top_nav")
+            </div>
+        </nav>
+    </header>
 
-            <section class="content">
-                <div class='container'>
-                    {!! Alert::dump($errors->all()) !!}
-                </div>
-                @yield('content')
-            </section>
-        </div>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.main_sidebar")
+        </section>
+    </aside>
 
-        <div id='wrap0'>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                @yield('title')
+            </h1>
+        </section>
 
-        </div>
-
-        @include('laravel_dashboard::partials.back.foot')
+        <section class="content">
+            <div class='container'>
+                {!! app('alert')::dump($errors->all()) !!}
+            </div>
+            @yield('content')
+        </section>
     </div>
+
+
+
+    <footer class="main-footer">
+        @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME. "::partials.footer")
+    </footer>
+
+    <!-- The Right Sidebar -->
+    <aside class="control-sidebar control-sidebar-{{$dashboard->getControlSidebarTheme()}}">
+        @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.control_sidebar")
+    </aside>
+    <div class="control-sidebar-bg"></div>
+
+    @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.foot_assets")
+</div>
 </body>
 </html>

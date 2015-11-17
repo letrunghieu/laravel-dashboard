@@ -112,6 +112,10 @@ class Dashboard
         return (bool)$this->config->get(static::PLUGIN_NAME . 'mini_sidebar');
     }
 
+    public function getControlSidebarTheme() {
+        return $this->config->get(static::PLUGIN_NAME . 'control_sidebar_theme');
+    }
+
     /**
      * Get JSON object of the Admin LTE javascript option array
      *

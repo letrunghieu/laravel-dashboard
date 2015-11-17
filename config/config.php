@@ -42,7 +42,7 @@ return [
      *
      * To toggle the control sidebar, add the data attribute `data-toggle="control-sidebar"` to any button.
      */
-    'control_sidebar_color' => 'dark',
+    'control_sidebar_theme' => 'dark',
 
     /*
      * Admin LTE javascript options
