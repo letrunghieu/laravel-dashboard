@@ -17,7 +17,7 @@ return [
     /*
      * Show mini sidebar when collapsed
      */
-    'mini_sidebar'          => false,
+    'mini_sidebar'          => true,
 
     /*
      * The skin color, available values:

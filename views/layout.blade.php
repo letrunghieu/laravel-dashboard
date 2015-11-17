@@ -16,7 +16,7 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
         var AdminLTEOptions = {!! $dashboard->getAdminLteJsOptions() !!};
     </script>
 </head>
-<body class="{{ $dashboard->getBodyClasses()->getClasses() }} skin-{{$dashboard->getSkin()}} {{$dashboard->getLayout()}} {{$dashboard->isSidebarCollapse() ? 'sidebar_collapse' : ''}} {{$dashboard->useMiniSidebar() ? 'mini_sidebar' : ''}}">
+<body class="{{ $dashboard->getBodyClasses()->getClasses() }} skin-{{$dashboard->getSkin()}} {{$dashboard->getLayout()}} {{$dashboard->isSidebarCollapse() ? 'sidebar-collapse' : ''}} {{$dashboard->useMiniSidebar() ? 'sidebar-mini' : ''}}">
 <div class="wrapper">
     <header class="main-header">
         <!-- Logo -->
