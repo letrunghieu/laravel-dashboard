@@ -76,6 +76,14 @@ class DashboardTest extends \Orchestra\Testbench\TestCase
         $this->assertSame(json_encode($defaultLteConfig), $dashboard->getAdminLteJsOptions());
     }
 
+    public function testOtherDependenciesInitiated()
+    {
+        $this->assertInstanceOf(HieuLe\Alert\Alert::class, app('alert'));
+        $this->assertInstanceOf(\HieuLe\LaravelMenu\MenuManager::class, app('menu.manager'));
+        $this->assertInstanceOf(HieuLe\Active\Active::class, app('active'));
+        $this->assertInstanceOf(HieuLe\BodyClasses\Body::class, app('laravel_dashboard')->getBodyClasses());
+    }
+
     protected function getPackageProviders($app)
     {
         return [
