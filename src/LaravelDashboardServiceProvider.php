@@ -30,13 +30,15 @@ class LaravelDashboardServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(Dashboard::PLUGIN_NAME, function ($app) {
-            return new Dashboard($app['config'], new Body());
-        });
-
         // register dependencies' service providers
         $this->app->register(ActiveServiceProvider::class);
         $this->app->register(LaravelMenuServiceProvider::class);
         $this->app->register(AlertServiceProvider::class);
+
+
+        $this->app->singleton(Dashboard::PLUGIN_NAME, function ($app) {
+            return new Dashboard($app['config'], new Body(), $app['menu.manager']);
+        });
+
     }
 }
