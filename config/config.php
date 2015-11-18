@@ -4,10 +4,11 @@ return [
     /*
      * Layout options:
      *
+     * + <empty string>   : the default layout
      * + fixed            : get a fixed header and sidebar
      * + layout-boxed     : get a boxed layout that stretches only to 1250px
      */
-    'layout'                => 'fixed',
+    'layout'                => '',
 
     /*
      * Have a collapsed sidebar upon loading
