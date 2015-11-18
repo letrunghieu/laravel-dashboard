@@ -29,10 +29,7 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
                 <span class="sr-only">Toggle navigation</span>
             </a>
 
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.top_nav")
-            </div>
+            @include(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME . "::partials.top_nav")
         </nav>
     </header>
 
@@ -59,7 +56,6 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
             @yield('content')
         </section>
     </div>
-
 
 
     <footer class="main-footer">
