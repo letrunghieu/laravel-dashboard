@@ -5,6 +5,7 @@ namespace HieuLe\LaravelDashboard;
 use HieuLe\BodyClasses\Body;
 use HieuLe\LaravelMenu\MenuManager;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Routing\Router;
 
 class Dashboard
 {
@@ -35,6 +36,11 @@ class Dashboard
     protected $menuManager;
 
     /**
+     * @var Router
+     */
+    protected $router;
+
+    /**
      * The name of the current breadcrumb
      *
      * @var string
@@ -53,13 +59,14 @@ class Dashboard
      *
      * @param Repository  $config
      * @param MenuManager $menuManager
-     * @param Body        $bodyClasses
+     * @param Router      $router
      */
-    public function __construct(Repository $config, MenuManager $menuManager, Body $bodyClasses)
+    public function __construct(Repository $config, MenuManager $menuManager, Router $router)
     {
         $this->config = $config;
         $this->menuManager = $menuManager;
-        $this->bodyClasses = $bodyClasses;
+        $this->router = $router;
+        $this->bodyClasses = new Body();
 
         $this->bodyClasses->addClasses('admin');
     }
@@ -113,7 +120,7 @@ class Dashboard
      */
     public function getBreadcrumbName()
     {
-        return $this->breadcrumbName ?: app('router')->currentRouteName();
+        return $this->breadcrumbName ?: $this->router->currentRouteName();
     }
 
     /**

@@ -36,7 +36,7 @@ class LaravelDashboardServiceProvider extends ServiceProvider
         $this->app->register(AlertServiceProvider::class);
 
         $this->app->singleton(Dashboard::PLUGIN_NAME, function ($app) {
-            return new Dashboard($app['config'], $app['menu.manager'], new Body());
+            return new Dashboard($app['config'], $app['menu.manager'], $app['router']);
         });
 
     }

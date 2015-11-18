@@ -71,7 +71,7 @@ class DashboardTest extends \Orchestra\Testbench\TestCase
         $this->assertSame('blue', $dashboard->getSkin());
         $this->assertSame('fixed', $dashboard->getLayout());
         $this->assertSame(false, $dashboard->isSidebarCollapse());
-        $this->assertSame(false, $dashboard->useMiniSidebar());
+        $this->assertSame(true, $dashboard->useMiniSidebar());
         $this->assertSame('dark', $dashboard->getControlSidebarTheme());
         $this->assertSame(json_encode($defaultLteConfig), $dashboard->getAdminLteJsOptions());
     }
