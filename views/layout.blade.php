@@ -44,7 +44,7 @@ $dashboard = app(\HieuLe\LaravelDashboard\Dashboard::PLUGIN_NAME);
             <h1>
                 @yield('title')
             </h1>
-            @if (in_array('DaveJamesMiller\Breadcrumbs\ServiceProvider', app()->getLoadedProviders()))
+            @if (array_key_exists('DaveJamesMiller\Breadcrumbs\ServiceProvider', app()->getLoadedProviders()))
                 {!! app('breadcrumbs')->renderIfExistsArray($dashboard->getBreadcrumbName(), $dashboard->getBreadcrumbParams()) !!}
             @endif
         </section>
