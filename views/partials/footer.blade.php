@@ -3,4 +3,4 @@
     Demo copyright note
 </div>
 <!-- Default to the left -->
-<strong>Copyright &copy; 2015 <a href="#">My Company</a>.</strong> All rights reserved.
+<strong>Copyright &copy; {!! date('Y') !!} <a href="#">My Company</a>.</strong> All rights reserved.
